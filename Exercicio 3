@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+    public class Aula1_teste4 {
+
+        public static void main(String[] args) {
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Escreva seu texto:\n");
+            String testestring = scanner.nextLine();
+
+            while (!testestring.equals("fim")) {
+                System.out.print(testestring+"\n");
+                 testestring = scanner.nextLine();
+            }
+
+        }
+    }
