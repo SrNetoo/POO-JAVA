@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class Aula1_teste3 {
+
+    public static void main (String[] args){
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Escreva seu texto:\n");
+        String testeicmc = scanner.nextLine();
+
+        if(testeicmc.equals("ICMC-USP")) {
+            System.out.print("\n reconhecido");
+        }
+            else{
+                System.out.print("\n errado");
+            }
