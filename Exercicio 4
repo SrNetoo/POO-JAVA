@@ -1,17 +1,38 @@
 import java.util.Scanner;
 
-public class Aula1_teste5 {
+public class CalculadoraAritmeticaBinaria { // classe calculadora
+
+    public static int soma(int A,int B){ //metodo da soma
+
+        A = A + B;
+
+        return A;
+    }
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Escreva sua operacao:\n");
-        String testestring = scanner.nextLine();
+        System.out.print("Calculadora:\n");
+        String numeros="0"; // variavel que servira de controle para os nmeros a serem somados e o sinal de '='
 
-        while (!testestring.equals("=")) {
-            
-            System.out.print(testestring+"\n");
-            testestring = scanner.nextLine();
+        int x=0;  // variavel que acumula os valores parciais
+
+        while (!numeros.equals("=")) {
+
+            System.out.print(x+"\n");  // printa o valor atual da soma
+            numeros = scanner.nextLine(); // recebe o valor a ser adicionado
+            if (numeros.equals("=")){  // se for digitado o sinal de igual o loop de soma é interrompido
+                break;
+            }
+           x = soma(x, Integer.parseInt(numeros)); // faz a soma utilizando o metodo anteriormente criado
+
         }
 
+
+        System.out.print("\nSoma Final = "+x+"\n"); // printa o resultado final
+
     }
+
+
+
 }
