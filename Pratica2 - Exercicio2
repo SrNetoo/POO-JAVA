@@ -10,7 +10,6 @@ public class ex2 {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Escreva seu texto:\n");
         String testestring = scanner.nextLine();
         int controle = 0;
         int X=0;
