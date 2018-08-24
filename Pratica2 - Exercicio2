@@ -1,0 +1,39 @@
+//NELSON CALSOLARI NETO 10277022
+
+import java.util.Scanner;
+
+public class ex2 {
+
+
+
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Escreva seu texto:\n");
+        String testestring = scanner.nextLine();
+        int controle = 0;
+        int X=0;
+
+
+        for(int i = 0; i< testestring.length(); i++){
+            if(testestring.charAt(i) == '+'){
+              X = Integer.parseInt( testestring.substring(controle,i));
+                System.out.print(X+" ");
+                controle = i+1;
+            }
+
+            if(testestring.charAt(i) == '*'){
+               X = Integer.parseInt( testestring.substring(controle,i));
+                System.out.print(X+" ");
+                controle = i+1;
+            }
+        }
+
+        X = Integer.parseInt( testestring.substring(controle,testestring.length()));
+        System.out.print(X);
+
+    }
+
+
+}
