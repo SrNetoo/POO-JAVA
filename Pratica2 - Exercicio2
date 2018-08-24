@@ -17,17 +17,14 @@ public class ex2 {
 
 
         for(int i = 0; i< testestring.length(); i++){
-            if(testestring.charAt(i) == '+'){
+            
+            if((testestring.charAt(i) == '+') || (testestring.charAt(i) == '*')){
               X = Integer.parseInt( testestring.substring(controle,i));
                 System.out.print(X+" ");
                 controle = i+1;
             }
 
-            if(testestring.charAt(i) == '*'){
-               X = Integer.parseInt( testestring.substring(controle,i));
-                System.out.print(X+" ");
-                controle = i+1;
-            }
+
         }
 
         X = Integer.parseInt( testestring.substring(controle,testestring.length()));
