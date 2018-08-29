@@ -12,7 +12,7 @@ public class ex1 {
             Scanner scanner = new Scanner(System.in);
             String testestring = scanner.nextLine();
 
-           for(int i = 0; i< testestring.length(); i++){1
+           for(int i = 0; i< testestring.length(); i++){
                if(testestring.charAt(i) == '+'){
                    System.out.print("S\n");
                }
