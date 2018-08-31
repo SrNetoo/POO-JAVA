@@ -20,8 +20,13 @@ public class exercicio2 {
             if((testestring.charAt(i) == '@')){
                 
                 X = testestring.substring(controle,i);
-                System.out.println(X+" ");
-                controle = i+11;
+                System.out.println(X);
+               
+            }
+            
+            if((testestring.charAt(i) == ',')){
+                controle=i+1;
+               
             }
 
 
