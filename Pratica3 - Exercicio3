@@ -1,0 +1,43 @@
+
+import java.util.Scanner;
+public class exercicio3 {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        String testestring = scanner.nextLine();
+        int controle = 0;
+        int X=0;
+        int Y=0;
+        int R=0;
+
+ 
+         String parts[] = testestring.split(" ");
+
+        if((testestring.charAt(testestring.length()-1) == '+')){
+            X=Integer.parseInt(parts[0]);
+             Y=Integer.parseInt(parts[1]);
+           R=X+Y;
+
+            }
+            
+            if((testestring.charAt(testestring.length()-1) == '*')){
+            X=Integer.parseInt(parts[0]);
+             Y=Integer.parseInt(parts[1]);
+           R=X*Y;
+
+            }
+          
+         
+          
+            System.out.println(R);
+
+        }
+
+
+       
+
+
+    }
