@@ -1,0 +1,65 @@
+//NELSON CALSOLARI NETO 10277022
+
+import java.util.Scanner;
+
+public class exercicio1 {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        String testestring = scanner.nextLine();
+        int controle = 0;
+        int X=0;
+        int Y=0;
+
+
+
+
+        if((testestring.charAt(0) == '+')){
+            controle=2;
+            for(int i = 2; i< testestring.length(); i++){
+                if((testestring.charAt(i) == ' ')){
+                    X = Integer.parseInt( testestring.substring(controle,i));
+                        Y=Y+X;
+                    controle=i+1;
+
+                }
+
+            }
+            X = Integer.parseInt( testestring.substring(controle,testestring.length()));
+           Y=Y+X;
+            System.out.print(Y);
+
+        }
+
+
+         if((testestring.charAt(0) == '*')){
+             Y=1;
+            controle=2;
+            for(int i = 2; i< testestring.length(); i++){
+                if((testestring.charAt(i) == ' ')){
+                    X = Integer.parseInt( testestring.substring(controle,i));
+                        Y=Y*X;
+                    controle=i+1;
+
+                }
+
+            }
+            X = Integer.parseInt( testestring.substring(controle,testestring.length()));
+           Y=Y*X;
+            System.out.print(Y);
+
+        }
+
+
+
+
+
+
+
+    }
+
+
+}
