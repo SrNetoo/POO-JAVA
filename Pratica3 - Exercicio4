@@ -1,0 +1,83 @@
+import java.util.Scanner;
+
+    public class Person {
+
+        Scanner scanner = new Scanner(System.in);
+
+        private String name = "0";
+        private String birth = "0";
+        private double height = 0;
+        private double weight = 0;
+
+
+        public Person(String name){
+            this.name = name;
+        }
+
+        public Person(String name, String birth, double height, double weight){
+
+            this.name=name;
+            this.birth=birth;
+            this.height=height;
+            this.weight = weight;
+        }
+        //atributos
+
+
+
+        //metodos
+
+        public String toString(){
+            String s = "Nome: "+ getName() + ", Data de nascimento: " + getBirth() + ", Altura: " + getHeight() + ", IMC: " + imc();
+            return s;
+        }
+
+
+        public String getName(){
+            return this.name;
+        }
+
+
+
+        public String getBirth(){
+            return this.birth;
+        }
+
+
+        public double getHeight(){
+            return this.height;
+        }
+        
+
+
+        public double imc(){
+            double resultado;
+
+            resultado = weight/(height*height);
+
+
+            return resultado;
+        }
+
+        public static void main(String[] args) {
+            // TODO Auto-generated method stub
+            Person p1 = new Person("Rafael", "23/01/1991", 1.72, 106.0);
+            Person p2 = new Person("Maria", "13/02/1981", 1.82, 65.0);
+            Person p3 = new Person("Mairo", "20/11/1890", 1.98, 132.0);
+
+            System.out.println(p1 == p2);
+            System.out.println(p2 == p3);
+
+            System.out.println(p1.imc());
+            System.out.println(p2.imc());
+            System.out.println(p3.imc());
+
+            System.out.println(p1);
+            System.out.println(p2);
+            System.out.println(p3);
+
+        }
+
+    }
+
+
