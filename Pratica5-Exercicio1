@@ -1,0 +1,200 @@
+
+*******MAIN***********
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+public class Main {
+    public static void main(String[] args){
+        Contatos exercicio1= new Contatos();
+        exercicio1.lista();
+
+    }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+*********CONTATOS****************
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+import java.util.*;
+import java.util.Scanner;
+
+
+
+public class Contatos {
+
+    //ATRIBUTOS
+    private String name;
+    private int number;
+
+
+
+    public Contatos(){
+        this.name="";
+        this.number=0;
+
+    }
+
+    public Contatos(String _name, int _number){
+        this.name=_name;
+        this.number=_number;
+    }
+
+
+    /**
+     * gets
+     */
+    public String getname(){
+        return name;
+    }
+
+    public int getnumber(){
+        return  number;
+    }
+
+
+    /**
+     *  sets
+     */
+    public void setname(String name_){
+        this.name=name_;
+    }
+
+    public void setnumber(int number_){
+        this.number=number_;
+    }
+
+
+        //METODOS
+
+    static List<Contatos>list= new ArrayList<Contatos>();
+
+    /**
+     * adiciona novo contato
+     */
+    public static void add( String nome, int numero){
+
+        list.add(new Contatos(nome,numero));
+
+    }
+
+
+    /**
+     * procura um contato
+     */
+    public static void search( String nome, int nmero){
+
+        for(int j=0;j<list.size();j++){
+            if(list.get(j).name.equals(nome)){
+                nmero= list.get(j).number;
+            }
+
+        }
+
+        if(nmero == 0){
+            System.out.println("nao existe");
+        }
+        else{
+            System.out.println(nmero);
+        }
+
+    }
+
+    /**
+     * mostra o tamanho da lista
+     */
+    public static void size(){
+
+        int tamanho = list.size();
+        System.out.println(tamanho);
+    }
+
+
+    /**
+     * mostra todos os contatos da lista
+     */
+    public static void all(){
+        for(int i=0;i<list.size();i++){
+            System.out.println(list.get(i).name + " " +list.get(i).number);
+        }
+
+    }
+
+
+
+
+    public void lista() {
+        Scanner scanner = new Scanner(System.in);
+        String entrada = scanner.nextLine();
+        //int controle = 0;
+        String name_controle;
+        int number_controle;
+
+        while (!entrada.equals("fim")) {
+
+           // controle ++;
+
+            if (entrada.equals("adicionar")) {
+
+                entrada= scanner.nextLine();
+                name_controle=entrada;
+
+                entrada= scanner.nextLine();
+                number_controle = Integer.parseInt(entrada);
+
+
+                Contatos.add(name_controle,number_controle);
+                System.out.println("OK");
+
+            }
+            else{
+
+                if (entrada.equals("buscar")){
+
+                    entrada = scanner.nextLine();
+                    name_controle=entrada;
+                    number_controle=0;
+
+                    for(int j=0;j<list.size();j++){
+                        if(list.get(j).name.equals(name_controle)){
+                            number_controle= list.get(j).number;
+                        }
+
+                    }
+
+                    Contatos.search(name_controle,number_controle);
+
+                }
+                else{
+
+                    if(entrada.equals("ncontatos")){
+                        Contatos.size();
+                    }
+                    else {
+
+                        if (entrada.equals("todos")) {
+                            Contatos.all();
+
+                        } else {
+                            System.out.println("????");
+
+                        }
+                    }
+                }
+            }
+
+            System.out.println(" ");
+            entrada = scanner.nextLine();
+        }
+    }
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
