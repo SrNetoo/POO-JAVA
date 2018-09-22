@@ -1,0 +1,244 @@
+***********MAIN2**************
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public class Main2 {
+    public static void main(String[] args){
+        Contatos2 exercicio2= new Contatos2();
+        exercicio2.lista();
+
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+************CONTATOS2****************
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+
+public class Contatos2 {
+
+    //ATRIBUTOS
+    private String name;
+    private int number;
+
+
+
+    public Contatos2(){
+        this.name="";
+        this.number=0;
+
+    }
+
+    public Contatos2(String _name, int _number){
+        this.name=_name;
+        this.number=_number;
+    }
+
+
+    /**
+     * gets
+     */
+    public String getname(){
+        return name;
+    }
+
+    public int getnumber(){
+        return  number;
+    }
+
+
+    /**
+     *  sets
+     */
+    public void setname(String name_){
+        this.name=name_;
+    }
+
+    public void setnumber(int number_){
+        this.number=number_;
+    }
+
+
+    //METODOS
+
+    static List<Contatos2> list2= new ArrayList<Contatos2>();
+
+    /**
+     * adiciona novo contato
+     */
+    public static void add( String nome, int numero){
+
+        list2.add(new Contatos2(nome,numero));
+
+    }
+
+
+    /**
+     * procura um contato
+     */
+    public static void search( String nome, int nmero){
+
+        for(int j=0;j<list2.size();j++){
+            if(list2.get(j).name.equals(nome)){
+                nmero= list2.get(j).number;
+            }
+
+        }
+
+        if(nmero == 0){
+            System.out.println("nao existe");
+        }
+        else{
+            System.out.println(nmero);
+        }
+
+    }
+
+    /**
+     * mostra o tamanho da lista
+     */
+    public static void size(){
+
+        int tamanho = list2.size();
+        System.out.println(tamanho);
+    }
+
+
+    /**
+     * mostra todos os contatos da lista
+     */
+    public static void all(){
+        for(int i=0;i<list2.size();i++){
+            System.out.println(list2.get(i).name + " " +list2.get(i).number);
+        }
+
+    }
+
+
+
+
+    public void lista() {
+        Scanner scanner = new Scanner(System.in);
+        String entrada = scanner.nextLine();
+        //int controle = 0;
+        String name_controle;
+        String name_controle2;
+        int number_controle;
+        int number_controle2;
+        int number_controle3 = 0; // controla se eh o primeiro contato adicionado
+
+        while (!entrada.equals("fim")) {
+
+            // controle ++;
+
+            if (entrada.equals("adicionar")) {
+
+                if(number_controle3 == 0){   // se for o primeiro contato nao checa, soh adiciona
+
+                    entrada= scanner.nextLine();
+                    name_controle=entrada;
+
+                    entrada= scanner.nextLine();
+                    number_controle = Integer.parseInt(entrada);
+                    number_controle2=0;
+
+
+
+
+                        Contatos2.add(name_controle,number_controle);
+                        System.out.println("OK");
+
+
+                }
+                else{ // se nao for o primeiro contato faz a chcagem pra ver se o contato ja existe
+
+                    entrada= scanner.nextLine();
+                    name_controle=entrada;
+
+                    entrada= scanner.nextLine();
+                    number_controle = Integer.parseInt(entrada);
+
+                    number_controle2=0;
+
+
+
+                    for(int j=0;j<list2.size();j++){
+                        if(list2.get(j).name.equals(name_controle)){
+                            number_controle2 ++;
+                        }
+
+                    }
+
+                    if(number_controle2 == 0){
+                        Contatos2.add(name_controle,number_controle);
+                        System.out.println("OK");
+
+                    }
+                    else{
+
+                        System.out.println("ja_existe");
+                    }
+
+                }
+
+
+
+                number_controle3 ++;
+            }
+            else{
+
+                if (entrada.equals("buscar")){
+
+                    entrada = scanner.nextLine();
+                    name_controle=entrada;
+                    number_controle=0;
+
+                    for(int j=0;j<list2.size();j++){
+                        if(list2.get(j).name.equals(name_controle)){
+                            number_controle= list2.get(j).number;
+                        }
+
+                    }
+
+                    Contatos2.search(name_controle,number_controle);
+
+                }
+                else{
+
+                    if(entrada.equals("ncontatos")){
+                        Contatos2.size();
+                    }
+                    else {
+
+                        if (entrada.equals("todos")) {
+                            Contatos2.all();
+
+                        } else {
+                            System.out.println("????");
+
+                        }
+                    }
+                }
+            }
+
+            System.out.println(" ");
+            entrada = scanner.nextLine();
+        }
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
