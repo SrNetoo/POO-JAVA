@@ -1,0 +1,238 @@
+*********MAIN3***********
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+public class Main3 {
+
+    public static void main(String[] args){
+
+        Casa casinha= new Casa();
+        casinha.ContrucaoDaCasa();
+
+
+    }
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+***********CASA************
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Casa {
+
+    private String cor;
+    private int totalportas;
+    private static List<Integer> portas = new ArrayList<>();
+
+    public Casa(){
+        this.cor="sem cor ainda";
+        this.totalportas=0;
+        List<Integer> portas = new ArrayList<>();
+    }
+
+    //  SETS
+    public void Setcor(String color){
+        this.cor=color;
+    }
+
+    // GETS
+    public String Getcolor(){
+        return this.cor;
+    }
+
+    public int Getportas(){
+        return this.totalportas;
+    }
+
+    //  METODOS
+
+    public void  Pinta (String corpassada) {
+        this.cor=corpassada;
+    }
+    
+    public static int QuantasPortasAbertas(){
+        int referencia=0;
+        
+        for(int i =0; i<portas.size(); i++){
+            if(portas.get(i) == 1){
+                referencia ++;
+            }
+        }
+        
+        return  referencia;
+        
+    }
+    
+    public static void AdicionaPorta (){
+
+        portas.add(0);
+    }
+
+
+    public static int TotalPortas(){
+        return portas.size();
+    }
+
+
+    public void ContrucaoDaCasa(){
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.println(" ");
+        System.out.println("Sua casa foi construida digite:");
+        System.out.println("'pintar' para pintar a casa");
+        System.out.println("'porta' para adicionar uma porta (ela eh adicionada fechada)");
+        System.out.println("'abrir' para abrir uma porta");
+        System.out.println("'fechar' para fechar uma porta");
+        System.out.println("'quantas' para saber quantas portas estao abertas");
+        System.out.println("'total' para saber o total de portas");
+        System.out.println("'terminado' para parar a personalizacao");
+
+        String entrada = scanner.nextLine();
+        String enter;
+
+        while (!entrada.equals("terminado")){
+
+            if(entrada.equals("pintar")){
+                System.out.println("Qual a cor que deseja?");
+                entrada = scanner.nextLine();
+                Pinta(entrada);
+                System.out.println(" ");
+                System.out.println("sua casa esta com a cor: " + Getcolor());
+                System.out.println("press enter");
+                enter = scanner.nextLine();
+            }
+
+
+            if(entrada.equals("porta")){
+                Casa.AdicionaPorta();
+                int portaatual;
+                portaatual = portas.size() - 1;
+                System.out.println("A porta de nmero " + portaatual + " foi adicionada");
+                System.out.println("press enter");
+                enter = scanner.nextLine();
+            }
+
+
+            if(entrada.equals("abrir")){
+                System.out.println("Qual o nmero da porta a qual deseja abrir?");
+                entrada = scanner.nextLine();
+                int controle = 0; // usada para saber se existe a porta selecionada
+
+                for(int i =0; i<portas.size(); i++){
+                    if(i == Integer.parseInt(entrada)){
+                        portas.set(i,1);
+                        System.out.println("Porta " + entrada + " aberta");
+                        System.out.println("press enter");
+                        enter = scanner.nextLine();
+                    }
+                    else{
+                        controle ++;
+                    }
+                }
+
+                if(controle == portas.size()){
+                    System.out.println("Porta nao existe");
+                    System.out.println("press enter");
+                    enter = scanner.nextLine();
+                }
+
+            }
+
+
+            if(entrada.equals("fechar")){
+
+                System.out.println("Qual o nmero da porta a qual deseja fechar?");
+                entrada = scanner.nextLine();
+                int controle = 0; // usada para saber se existe a porta selecionada
+
+                for(int i =0; i<portas.size(); i++){
+                    if(i == Integer.parseInt(entrada)){
+                        portas.set(i,0);
+                        System.out.println("Porta " + entrada + " fechada");
+                        System.out.println("press enter");
+                        enter = scanner.nextLine();
+                    }
+                    else{
+                        controle ++;
+                    }
+                }
+
+                if(controle == portas.size()){
+                    System.out.println("Porta nao existe");
+                    System.out.println("press enter");
+                    enter = scanner.nextLine();
+                }
+
+
+            }
+
+            if(entrada.equals("quantas")){
+
+                System.out.println(Casa.QuantasPortasAbertas() + " porta(s) esta(ao) aberta(s)");
+                System.out.println("press enter");
+                enter = scanner.nextLine();
+
+            }
+
+            if(entrada.equals("total")){
+                System.out.println("Total de portas existentes : " + Casa.TotalPortas());
+                System.out.println("press enter");
+                enter = scanner.nextLine();
+            }
+
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println(" ");
+            System.out.println("Digite:");
+            System.out.println("'pintar' para pintar a casa");
+            System.out.println("'porta' para adicionar uma porta (ela eh adicionada fechada)");
+            System.out.println("'abrir' para abrir uma porta");
+            System.out.println("'fechar' para fechar uma porta");
+            System.out.println("'quantas' para saber quantas portas estao abertas");
+            System.out.println("'total' para saber o total de portas");
+            System.out.println("'terminado' para parar a personalizacao");
+
+            entrada = scanner.nextLine();
+
+
+
+
+        }
+
+        System.out.println("Sua casa esta finalizada");
+        System.out.println("Cor: " + Getcolor());
+        System.out.println("Total de portas: " + Casa.TotalPortas());
+        System.out.println("Total de portas abertas: " + Casa.QuantasPortasAbertas());
+
+
+
+    }
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
