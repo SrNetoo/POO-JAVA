@@ -1,0 +1,138 @@
+*****MAIN******
+////////////////////////////////////////////////////////////////////////////////
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args){
+
+        System.out.println("Jogo dos dados\n");
+
+        System.out.println("Nome do jogador1:");
+        Scanner scanner = new Scanner(System.in);
+        String entrada = scanner.nextLine();
+        Jogador j1 = new Jogador(entrada);
+
+        System.out.println("Nome do jogador2:");
+         entrada = scanner.nextLine();
+        Jogador j2 = new Jogador(entrada);
+
+        System.out.println("Dado de quantas faces?:");
+        entrada = scanner.nextLine();
+        Dados d1 = new Dados(Integer.parseInt(entrada));
+
+        System.out.println("Quantas rodadas?:");
+        entrada = scanner.nextLine();
+        int rodadas = Integer.parseInt(entrada);
+        int valordado;
+        int i = 1;
+
+        System.out.println("\n\n");
+
+        while(rodadas>0) {
+
+            if(rodadas==1){
+                System.out.println("Ultima rodada");
+            }
+            else {
+                System.out.println("Rodada: " + i);
+            }
+
+            System.out.println("Jogador "+j1.nome+" presione enter para jogar o dado"); // jogada do 1 dado
+            entrada = scanner.nextLine();
+            valordado= 1 + d1.dado.nextInt(d1.tamanho-1); // ramdon entre 1 e tamanho
+            j1.pontuacao = j1.pontuacao + valordado;
+            System.out.println("Dado: " + valordado);
+            System.out.println("\n\n");
+
+            System.out.println("Jogador "+j1.nome+" presione enter para jogar o dado novamente"); // jogada 2 dado
+            entrada = scanner.nextLine();
+            valordado= 1 + d1.dado.nextInt(d1.tamanho-1); // ramdon entre 1 e tamanho
+            j1.pontuacao = j1.pontuacao + valordado;
+            System.out.println("Dado: " + valordado);
+            System.out.println("\n\n\n");
+
+
+
+
+            System.out.println("Jogador "+j2.nome+" presione enter para jogar o dado"); // jogada 1 dado
+            entrada = scanner.nextLine();
+            valordado= 1 + d1.dado.nextInt(d1.tamanho-1); // ramdon entre 1 e tamanho
+            j2.pontuacao = j2.pontuacao + valordado;
+            System.out.println("Dado: " + valordado);
+            System.out.println("\n\n");
+
+            System.out.println("Jogador "+j2.nome+" presione enter para jogar o dado novamente"); // jogada 2 dado
+            entrada = scanner.nextLine();
+            valordado= 1 + d1.dado.nextInt(d1.tamanho-1); // ramdon entre 1 e tamanho
+            j2.pontuacao = j2.pontuacao + valordado;
+            System.out.println("Dado: " + valordado);
+            System.out.println("\n\n\n");
+
+
+
+            System.out.println("Fim da rodada");
+            System.out.println("Pontos Jogador " + j1.nome + ": " + j1.pontuacao);
+            System.out.println("Pontos Jogador " + j2.nome + ": " + j2.pontuacao);
+            System.out.println("\n\n\n");
+            rodadas --;
+            i++;
+        }
+
+        System.out.println("Pontuacao final:");
+        System.out.println("Jogador " + j1.nome + ": " + j1.pontuacao);
+        System.out.println("Jogador " + j2.nome + ": " + j2.pontuacao);
+
+        if(j1.pontuacao>j2.pontuacao){
+            System.out.println("Jogador " + j1.nome + " Vencedor!!");
+        }
+
+        if(j1.pontuacao<j2.pontuacao){
+            System.out.println("Jogador " + j2.nome + " Vencedor!!");
+        }
+
+        if(j1.pontuacao == j2.pontuacao){
+            System.out.println("Empate!!");
+        }
+    }
+
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+*********JOGADOR*************
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public class Jogador {
+
+    public String nome;
+    public int pontuacao;
+
+
+    public Jogador(String name){
+        this.nome=name;
+        this.pontuacao=0;
+    }
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+******DADOS*******
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import java.util.Random;
+
+public class Dados {
+
+    public int tamanho;
+    public Random dado= new Random();
+
+    public Dados(int tam){
+        this.tamanho=tam;
+    }
+
+
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
