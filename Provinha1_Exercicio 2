@@ -1,0 +1,55 @@
+*******MAIN*****
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args){
+
+        Fatorial fat = new Fatorial();
+        System.out.println("Coloque o numero para o calculo do fatorial");
+
+        Scanner scanner = new Scanner(System.in);
+        String entrada = scanner.nextLine();
+        BigInteger resposta;
+
+       resposta =  fat.Fatorial(Integer.parseInt(entrada));
+
+       System.out.println("\n O resultado eh: " + resposta);
+
+
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+*****FATORIAL****
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import java.math.BigInteger;
+
+public class Fatorial {
+
+ // static BigInteger fatorial;
+
+    public BigInteger Fatorial(int entrada){
+
+      //  BigInteger fatorial
+        // ;
+   BigInteger f= BigInteger.valueOf(1L);
+
+        for( int fatorial = 1 ; entrada > 1 ; entrada --){
+
+            f = f.multiply(BigInteger.valueOf(entrada));
+
+        }
+
+        return f;
+
+    }
+
+
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
