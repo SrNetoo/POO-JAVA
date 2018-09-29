@@ -1,0 +1,90 @@
+****MAIN****
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args){
+        Invoice invoice = new Invoice();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite o numero do item faturado:");
+        String entrada = scanner.nextLine();
+        invoice.setNmero_item(Integer.parseInt(entrada));
+
+        System.out.println("Digite a descricao do item:");
+        entrada = scanner.nextLine();
+        invoice.setDescricao_item(entrada);
+
+        System.out.println("Digite a quantidade comprada:");
+        entrada = scanner.nextLine();
+        invoice.setQntdade_comprada(Integer.parseInt(entrada));
+
+        System.out.println("Digite o preco unitario do item (use ponto):");
+        entrada = scanner.nextLine();
+        invoice.setPreco_unidade(Double.parseDouble(entrada));
+
+        System.out.println("\n\nInformacoes finais:");
+        System.out.println("Nmero: " + invoice.getNmero_item() + "\nDescriçao: " + invoice.getDescricao_item() + "\nQntidade: " + invoice.getQntdade_comprada() + "\nPreco: " + invoice.getPreco_unidade() + " R$/un");
+        System.out.println("Fatura Final: R$ " + invoice.getInvoiceAmount());
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+****INVOICE*****
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ public void setDescricao_item(String s){
+        this.descricao_item=s;
+    }
+
+    public void setQntdade_comprada(int q){
+        if(q<0){
+            this.qntdade_comprada=0;
+        }
+        else{
+            this.qntdade_comprada=q;
+        }
+
+    }
+
+    public  void setPreco_unidade(double p){
+        if(p<0){
+            this.preco_unidade=0;
+        }
+        else{
+            this.preco_unidade=p;
+        }
+
+    }
+
+
+    // GETS
+    public int getNmero_item(){
+        return this.nmero_item;
+    }
+
+    public String getDescricao_item(){
+        return this.descricao_item;
+    }
+
+    public int getQntdade_comprada(){
+      return this.qntdade_comprada;
+    }
+
+    public double getPreco_unidade(){
+        return this.preco_unidade;
+    }
+
+    public double getInvoiceAmount(){
+        double fatura;
+
+        fatura = this.qntdade_comprada * this.preco_unidade;
+
+        return fatura;
+    }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
