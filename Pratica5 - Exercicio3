@@ -33,6 +33,7 @@ import java.util.Scanner;
 
 public class Casa {
 
+
     private String cor;
     private int totalportas;
     private static List<Integer> portas = new ArrayList<>();
