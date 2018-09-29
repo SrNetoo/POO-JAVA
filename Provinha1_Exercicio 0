@@ -1,0 +1,284 @@
+**********MAIN********
+/////////////////////////////////////////////////////////////////////////////////
+
+public class Main {
+
+
+        public static void main(String[] args){
+            Contatos exercicio1= new Contatos();
+            exercicio1.lista();
+
+        }
+
+
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+*********CONTATOS********
+////////////////////////////////////////////////////////////////////////////////////
+import java.util.*;
+import java.util.Scanner;
+
+
+
+public class Contatos {
+
+
+    //ATRIBUTOS
+    public String name;
+    public int age;
+    public int number;
+
+
+
+    public Contatos(){
+        this.name="";
+        this.age=0;
+        this.number=0;
+
+    }
+
+    public Contatos(String _name,int age, int _number){
+        this.name=_name;
+        this.age = age;
+        this.number=_number;
+    }
+
+
+    /**
+     * gets
+     */
+    public String getname(){
+        return name;
+    }
+
+    public int getnumber(){
+        return  number;
+    }
+
+    public int getage(){
+        return  age;
+    }
+
+
+    /**
+     *  sets
+     */
+    public void setname(String name_){
+        this.name=name_;
+    }
+
+    public void setnumber(int number_){
+        this.number=number_;
+    }
+
+    public void setage(int age_){
+        this.age = age_;
+    }
+
+
+
+
+    public void lista() {
+
+        System.out.println("Agenda Telefonica ");
+        System.out.println("Digite: ");
+        System.out.println("'adicionar' para adicionar um contato: nome,numero e idade ");
+        System.out.println("'buscar' para buscar um contato pelo nome ");
+        System.out.println("'ncontatos' para o total de contatos adicionados ");
+        System.out.println("'todos' para imprimir todos os contatos e seus dados");
+        System.out.println("'apagar' para apagar um contato pelo seu nome");
+        System.out.println("'fim' para fechar a agenda");
+        System.out.println(" ");
+
+
+        Scanner scanner = new Scanner(System.in);
+        String entrada = scanner.nextLine();
+        //int controle = 0;
+        String name_controle;
+        int number_controle;
+        int age_controle;
+
+        while (!entrada.equals("fim")) {
+
+            // controle ++;
+
+            if (entrada.equals("adicionar")) {
+
+                if(Agenda.list.size()>=10){  // checa tamnho da lista
+
+                    System.out.println("Lista cheia");
+                }
+                else {
+
+                    System.out.println("nome:"); // pega as variaveis
+                    entrada = scanner.nextLine();
+                    name_controle = entrada;
+
+                    System.out.println("numero:");
+                    entrada = scanner.nextLine();
+                    number_controle = Integer.parseInt(entrada);
+
+                    System.out.println("idade:");
+                    entrada = scanner.nextLine();
+                    age_controle = Integer.parseInt(entrada);
+
+
+                    Agenda.add(name_controle, age_controle, number_controle); // adiciona
+                    System.out.println("OK");
+                }
+
+            }
+            else{
+
+                if (entrada.equals("buscar")){
+
+                    System.out.println("nome:"); // pega o nome a ser buscado
+                    entrada = scanner.nextLine();
+                    name_controle=entrada;
+                    number_controle=0;
+                    age_controle=0;
+
+
+                    Agenda.search(name_controle,age_controle,number_controle); // busca
+
+                }
+                else{
+
+                    if(entrada.equals("ncontatos")){
+                        Agenda.size();
+                    }
+                    else {
+
+                        if (entrada.equals("todos")) {
+                            Agenda.all();
+
+                        } else {
+                            if(entrada.equals("apagar")){
+
+                                System.out.println("nome:"); // pega o nome a ser apagado
+                                entrada =scanner.nextLine();
+                                name_controle=entrada;
+                                number_controle=0;
+
+                                Agenda.apaga(name_controle,number_controle); // apaga
+                            }
+                            else {
+                                System.out.println("????"); // entrada nao indentificada
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            System.out.println(" ");
+            entrada = scanner.nextLine();
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+************AGENDA**************
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Agenda {
+
+
+    public static List<Contatos> list = new ArrayList<>(10);
+
+
+    /**
+     * adiciona novo contato
+     */
+    public static void add( String nome, int idade, int numero){
+
+        list.add(new Contatos(nome,idade,numero));
+
+    }
+
+
+    /**
+     * procura um contato
+     */
+    public static void search( String nome,int idade, int nmero){
+
+        for(int j=0;j<list.size();j++){
+            if(list.get(j).name.equals(nome)){
+                nmero= list.get(j).number;
+                idade= list.get(j).age;
+            }
+
+        }
+
+        if(nmero == 0){
+            System.out.println("nao existe");
+        }
+        else{
+            System.out.println(nmero);
+            System.out.println(idade);
+        }
+
+    }
+
+
+    /**
+     *  apaga um contato
+     */
+    public static void apaga( String nome, int nmero){
+        int parametro=0;
+        for(int j=0;j<list.size();j++){
+            if(list.get(j).name.equals(nome)){
+                nmero= list.get(j).number;
+                parametro=j;
+
+            }
+
+        }
+
+        if(nmero == 0){
+            System.out.println("nao existe");
+        }
+        else{
+            list.remove(parametro);
+            System.out.println("Apagado");
+
+        }
+
+
+    }
+
+
+    /**
+     * mostra o tamanho da lista
+     */
+    public static void size(){
+
+        int tamanho = list.size();
+        System.out.println(tamanho);
+    }
+
+
+    /**
+     * mostra todos os contatos da lista
+     */
+    public static void all(){
+
+        for(int i=0;i<list.size();i++){
+            System.out.println("Nome: "+list.get(i).name + "  Numero: " +list.get(i).number + "  Idade " + list.get(i).age);
+        }
+
+    }
+
+
+
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
