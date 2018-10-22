@@ -1,0 +1,79 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+
+public class DicionarioSimples {
+
+    private String word;
+    private String meaning;
+
+    static List<DicionarioSimples> dicio = new ArrayList<DicionarioSimples>();
+
+    // construtores
+    public DicionarioSimples(){
+        this.word=" ";
+        this.meaning=" ";
+    }
+
+    public DicionarioSimples(String p, String s){
+        this.word=p;
+        this.meaning=s;
+    }
+
+
+    //metodos
+
+    /**
+     *  Adiciona uma palavra
+     */
+
+    public boolean adicionar(String palavra, String significado){
+
+        // checa se a palavra ja existe
+        for(int i=0; i<dicio.size(); i++){
+            if(dicio.get(i).word.equals(palavra)){
+                return false;
+            }
+        }
+
+        dicio.add(new DicionarioSimples(palavra,significado));
+        return true;
+
+    }
+
+
+    /**
+     *  Busca uma palavra
+     */
+
+    public String buscar(String palavra){
+
+        for(int i=0; i<dicio.size(); i++){
+            if(dicio.get(i).word.equals(palavra)){
+                System.out.println(dicio.get(i).meaning);
+                return dicio.get(i).meaning;
+            }
+        }
+
+        String resposta ="";
+        return resposta;
+    }
+
+    /**
+     *  Mostra todos
+     */
+
+    public void mostrarTodo(){
+        for(int i=0; i<dicio.size(); i++){
+           System.out.println(dicio.get(i).word + ":" + dicio.get(i).meaning);
+            }
+        }
+
+
+
+
+
+
+}
