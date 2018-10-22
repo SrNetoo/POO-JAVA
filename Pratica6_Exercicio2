@@ -1,0 +1,91 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+
+
+public class DicionarioIP {
+
+
+        private String word;
+        private String synonym;
+
+        static List<DicionarioIP> dicioip = new ArrayList<DicionarioIP>();
+
+        // construtores
+        public DicionarioIP(){
+            this.word=" ";
+            this.synonym=" ";
+        }
+
+        public DicionarioIP(String p, String s){
+            this.word=p;
+            this.synonym=s;
+        }
+
+
+        //metodos
+
+        /**
+         *  Adiciona uma palavra
+         */
+
+        public boolean adicionar(String palavra, String significado){
+
+            // checa se a palavra ja existe
+            for(int i=0; i<dicioip.size(); i++){
+                if(dicioip.get(i).word.equals(palavra)){
+                    return false;
+                }
+            }
+
+            dicioip.add(new DicionarioIP(palavra,significado));
+            return true;
+
+        }
+
+
+        /**
+         *  Busca uma palavra
+         */
+
+        public String buscar(String palavra){
+
+            for(int i=0; i<dicioip.size(); i++){
+                if(dicioip.get(i).word.equals(palavra)){
+                    System.out.println(dicioip.get(i).synonym);
+                    return dicioip.get(i).synonym;
+                }
+            }
+
+            String resposta ="";
+            return resposta;
+        }
+
+        /**
+         *  Mostra todos
+         */
+
+        public void mostrarTodo(){
+        int x=0;
+
+
+            for(int i=0; i<dicioip.size(); i++){
+
+               String parts[] = dicioip.get(i).synonym.split(" ");
+               System.out.print(dicioip.get(i).word + ":");
+               for(int j=0; j<parts.length - 1; j++){
+                   System.out.print(parts[j] + ",");
+                   x = j+1;
+               }
+                System.out.print(parts[x]);
+                System.out.println(" ");
+            }
+
+        }
+        
+
+}
+
+
