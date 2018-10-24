@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Dicionario {
 
-    public String word;
-    public String description;
+    protected String word;
+    protected String description;
 
     static List<Dicionario> dicio = new ArrayList<Dicionario>();
 
