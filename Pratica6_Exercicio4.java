@@ -50,4 +50,4 @@ public class BancoDicionarios {
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-As outras Classes necessarias pro codigo "Dicionario" "DicionarioSimples" e "DicionarioIP" estao no exercicio 3 da pratica 6
+//As outras Classes necessarias pro codigo "Dicionario" "DicionarioSimples" e "DicionarioIP" estao no exercicio 3 da pratica 6
