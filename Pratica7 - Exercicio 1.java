@@ -55,13 +55,18 @@ public class Animal {
 public class Guepardo extends Animal {
     double velocidadeCorrida;
 
+    public Guepardo(){
+        this.velocidadeCorrida=0;
+    }
+
     @Override
     public void info() {
-        System.out.println("Velocidade:" + this.velocidadeCorrida);
+        System.out.println("\n\nVelocidade:" + this.velocidadeCorrida);
     }
 
 
 }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -73,12 +78,19 @@ public class Baleia extends Animal {
     double alturaMaximaSalto;
     double sinalInfrasonica;
 
+    public Baleia(){
+
+        this.alturaMaximaSalto=0;
+        this.sinalInfrasonica=0;
+    }
+
     @Override
     public void info() {
-        System.out.println("Salto:" + this.alturaMaximaSalto
+        System.out.println("\n\nSalto:" + this.alturaMaximaSalto
         + "\n\nSonido:" + this.sinalInfrasonica);
     }
 }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -88,12 +100,18 @@ public class Aguia extends Animal {
     double envergadura;
     double elevacaoMaxima;
 
+    public Aguia(){
+        this.envergadura=0;
+        this.elevacaoMaxima=0;
+    }
+
     @Override
     public void info() {
-        System.out.println("Envergadura:" + this.envergadura
+        System.out.println("\n\nEnvergadura:" + this.envergadura
         + "\n\nElevacao:" + this.elevacaoMaxima);
     }
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
