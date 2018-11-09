@@ -44,6 +44,8 @@ public class Programa1
         quadro.setLayout( new FlowLayout() );
         quadro.setSize(500,200);
         quadro.setLocationRelativeTo(null);
+        quadro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         quadro.add(campoTexto);
         quadro.add(campoTexto2);
 
